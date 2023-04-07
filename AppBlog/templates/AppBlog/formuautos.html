@@ -1,0 +1,29 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+<center>
+    <h1>Publica Tu Auto</h1>
+</center>
+
+{% endblock %}
+
+
+{% block texto %}
+
+<p><h5>aqui podras registrar los datos de tu auto</h5></p>
+
+<form action="" enctype="multipart/form-data" method='POST'> {% csrf_token %}
+
+    <table>
+
+        {{form.as_table}}
+
+    </table>
+
+    <input type="submit" class="btn btn-primary" value="Enviar">
+
+</form>
+
+
+{% endblock %}

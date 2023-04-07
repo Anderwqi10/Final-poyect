@@ -1,0 +1,20 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+Registro
+
+{% endblock %}
+
+
+{% block texto %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    {{form.as_p}}
+
+    <input type="submit" value="Registrarse">
+
+</form>
+
+{% endblock %}

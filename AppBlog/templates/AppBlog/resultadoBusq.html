@@ -1,0 +1,37 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+Búsqueda de autos
+
+{% endblock %}
+
+
+{% block texto %}
+
+<p> <b>Estamos buscando el auto con la marca: {{marca}}</b>  </p>
+
+{% if not auto %}
+
+No existe en la base de datos la marca: {{marca}}
+
+{% endif %}
+
+
+{% for a in auto %}
+<br>
+<p> <b>Marca: </b> {{a.marca}}</p>
+<p> <b>Modelo: </b> {{a.modelo}}</p>
+<p> <b>Versión:</b>  {{a.version}}</p>
+<p> <b>Año de fabricación:</b>  {{a.año_de_fabricacion}}</p>
+<p> <b>Motorización:</b>  {{a.motorizacion}}</p>
+<p> <b>Combustible:</b>  {{a.combustible}}</p>
+<p> <b>Descripción:</b>  {{a.descripcion}}</p>
+<img src="{{a.imagen.url}}" style="max-width: 500px">
+
+<p> <em>Fecha de creación: {{a.fecha_de_edicion}}</em> </p>
+    
+
+{% endfor %}
+
+{% endblock %}

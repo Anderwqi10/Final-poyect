@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog de Autos</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'AppBlog/assets/favicon.ico' %}" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppBlog/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <li class="btn btn-primary"><h2>Blog Autos</h2><a class="nav-link" href="{% url 'inicio' %}"></a></li>
+                <!-- <div class="sidebar-heading border-bottom bg-light"><h2>Blog de autos</h2></div> -->
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'listaAutos' %}"><h4>Lista de autos</h4></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'busqueda' %}"><h4>Buscar autos</h4></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'formulario' %}"><h4>Publica tu auto</h4></a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'about' %}"><h4>Acerca de mi</h4></a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                {% if request.user.is_authenticated %}
+                                <li class="nav-item active"><a class="nav-link"><b>hola {{user}}</b></a></li>
+                                {% with first_image=user.avatar_set.first %}
+                                <img src="{{first_image.imagen.url}}" style="max-width: 50px">
+                                {% endwith %}
+                                {% endif %}
+                                
+                                {% if not request.user.is_authenticated %}
+                                <li class="nav-item"><a class="nav-link" href="{% url 'registro' %}"><h5><p>Registrarse</p></h5></a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><h5><p>Iniciar sesión</p></h5></a></li>
+                                {% endif %}
+                                {% if request.user.is_authenticated %}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{% url 'editarusuario' %} ">Editar usuario</a>
+                                        <a class="dropdown-item" href="{% url 'agregarAvatar' %}">Agregar avatar</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+                                    </div>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h1 class="mt-4">
+
+                        {% block titulo %}
+
+                        {% endblock %}
+
+                    </h1>
+                    <p>
+                        {% block texto %}
+
+                        {% endblock %}
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'AppBlog/js/scripts.js' %}"></script>
+    </body>
+</html>

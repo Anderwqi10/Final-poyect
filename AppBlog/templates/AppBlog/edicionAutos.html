@@ -1,0 +1,24 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+Edición del auto seleccionado
+
+{% endblock %}
+
+
+{% block texto %}
+
+<form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+
+    <table>
+
+        {{form.as_table}}
+
+    </table>
+
+    <input type="submit" value="Editar">
+
+</form>
+
+{% endblock %}

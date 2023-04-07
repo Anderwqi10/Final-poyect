@@ -1,0 +1,24 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+<center>
+    <h1>Busqueda Autos</h1>
+</center>
+
+{% endblock %}
+
+
+{% block texto %}
+
+<p><h4>Ingrese el auto que desea Buscar</h4></p>
+
+<form action="/AppBlog/resultadobusqueda/" method='GET'> {% csrf_token %}
+
+    <input type="text" name="marca">
+    <input type="submit" class="btn btn-primary" value="Buscar" id="Buscar">
+
+</form>
+
+
+{% endblock %}

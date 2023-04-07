@@ -1,0 +1,27 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+<center>
+    <h2>Autos Publicados</h2>
+</center>
+  
+
+{% endblock %}
+
+
+{% block texto %}
+
+{% for auto in object_list %}
+    
+    <li><b><h4>{{auto.marca}} {{auto.modelo}}</h4></b></li>         
+    <em>
+        <a class="btn btn-outline-primary" href="{% url 'detalleAuto' auto.id %}">Detalles</a>
+        <a class="btn btn-outline-primary" href="{% url 'editarAuto' auto.id %}">Editar</a>
+        <a class="btn btn-outline-primary" href="{% url 'eliminarAuto' auto.id %}">Eliminar</a>
+        
+    </em>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+Agregar avatar
+
+{% endblock %}
+
+
+{% block texto %}
+
+<form action="" enctype="multipart/form-data" method='POST'> {% csrf_token %}
+
+    <table>
+
+        {{miFormu.as_table}}
+
+    </table>
+
+    <input type="submit" class="btn btn-primary" value="Guardar">
+
+</form>
+
+{% endblock %}

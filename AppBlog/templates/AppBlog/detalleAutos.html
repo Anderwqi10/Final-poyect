@@ -1,0 +1,26 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% block titulo %}
+
+<center>
+    <h1>Detalles del autos</h1>
+</center>
+
+{% endblock %}
+
+
+{% block texto %}
+
+<p> <b><h5>Marca:</h5></b>  <h6>{{autos.marca}}</h6></p>
+<p> <b><h5>Modelo:</h5></b>  <h6>{{autos.modelo}}</h6></p>
+<p> <b><h5>version</h5></b>  <h6>{{autos.version}}</h6></p>
+<p> <b><h5>Año de fabricación:</h5></b>  <h6>{{autos.año_de_fabricacion}}</h6></p>
+<p> <b><h5>Motorización:</h5></b>  <h6>{{autos.motorizacion}}</h6></p>
+<p> <b><h5>Combustible:</h5></b>  <h6>{{autos.combustible}}</h6></p>
+<p> <b><h5>Descripción:</h5></b>  <h6>{{autos.descripcion}}</h6></p>
+<img src="{{autos.imagen.url}}" style="max-width: 500px">
+
+
+
+
+{% endblock %}
