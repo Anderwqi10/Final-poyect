@@ -23,25 +23,35 @@ def aboutinfo (request):     #funcion para mostrar la información "acerca de"
 
 
 @login_required
-def formularioAutos(request):   #funcion para mostrar el formulario para ingresar autos
+def formularioAutos(request):
+
 
     if request.method == 'POST':
 
+
         form = FormuAutos(request.POST, request.FILES)
+
 
         if form.is_valid():
 
+
             info = form.cleaned_data
 
-            auto = Autos(marca=info['marca'], modelo=info['modelo'], año_de_fabricacion=info['año_de_fabricacion'], descripcion=info['descripcion'], fecha_de_edicion=date.today(), imagen=info['imagen'], version=info['version'], motorizacion=info['motorizacion'], combustible=info['combustible'])
+
+            auto = Autos(marca=info['marca'], modelo=info['modelo'], año_de_fabricacion=info['año_de_fabricacion'], descripcion=info['descripcion'], fecha_de_edicion=date.today(), imagen=info['imagen'], version=info['version'], motorizacion=info['motorizacion'], combustible=info['combustible'], usuario=request.user)
+
 
             auto.save()
 
+
             return render (request, "AppBlog/inicio.html")
+
 
     else:
 
+
         form = FormuAutos()
+
 
     return render (request, 'AppBlog/formuautos.html', {"form": form})
 
