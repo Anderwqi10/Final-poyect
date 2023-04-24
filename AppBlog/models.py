@@ -2,7 +2,9 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import UserPassesTestMixin
-
+from django.conf import settings
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.views.generic.edit import UpdateView, DeleteView
 
 
 class Autos(models.Model):
